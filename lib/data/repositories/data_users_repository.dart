@@ -51,4 +51,10 @@ class DataUsersRepository extends UsersRepository{
     return null;
   }
 
+  @override
+  User getCurrentUser(String uId) {
+    // TODO: implement getCurrentUser
+    return null;
+  }
+
 }
