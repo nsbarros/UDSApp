@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "631041049851",
+    "firebase_url": "https://udstecnologia-5e940.firebaseio.com",
+    "project_id": "udstecnologia-5e940",
+    "storage_bucket": "udstecnologia-5e940.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:631041049851:android:bbb9406f53ec95f1bc5c5e",
+        "android_client_info": {
+          "package_name": "test.uds.com.br.uds_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "631041049851-vqmig2v1q2nj2g5nf1v79eq90rma1n49.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC987ceA481zqnQxXbFiQozOnYn39IoQFc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "631041049851-vqmig2v1q2nj2g5nf1v79eq90rma1n49.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
