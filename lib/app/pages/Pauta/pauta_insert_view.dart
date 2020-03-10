@@ -156,7 +156,7 @@ class _AddPautaState extends ViewState<AddPauta, AddPautaController> {
   }
 
   String _validarForm(String value) {
-    if(value.isNotEmpty){
+    if(value.isEmpty){
      return "Required field";
     }
     return null;
