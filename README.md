@@ -1,16 +1,37 @@
-# uds_app
+## UDS App
 
-A new Flutter application.
+## Tecnologias utilizadas: 
 
-## Getting Started
+-- Flutter </br>
+-- Dart    ,<br>
+-- Clean Architecture ,<br>
+-- Firebase ,<br>
+-- FireStore ,<br> 
 
-This project is a starting point for a Flutter application.
+## Requisitos Mínimos
 
-A few resources to get you started if this is your first Flutter project:
+Foi implementado os requisitos obrigatórios requisitados: 
+</br> 
+* Cadastro de usuários: cadastrar usuário, recuperar senha, validação dos formulários de login
+</br> 
+* Pautas: listar pautas abertas e fechadas e cadastro de pautas.
+</br> 
+* Perfil: exibir perfil de acesso.
+</br> 
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
+<p align="center">
+  <img src="pics/addpauta.jpeg" alt="AddPauta" />
+  <img src="pics/listOpen.jpeg" alt="Arquitetura" />
+  <img src="pics/login.jpeg" alt="Arquitetura" />
+  <img src="pics/menu.jpeg" alt="Arquitetura" />
+  <img src="pics/profile.jpeg" alt="Arquitetura" />
+  <img src="pics/recoverpassword.jpeg" alt="Arquitetura" />
+  <img src="pics/signup.jpeg" alt="Arquitetura" />
+</p>
 
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Segue abaixo, o diagrama que explica como foi implementado a arquitetura baseado nos conceitos de Clean Architecture.
+</br> 
+
+<p align="center">
+  <img src="pics/architecture.png" alt="Arquitetura" />
+</p>
