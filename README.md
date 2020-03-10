@@ -12,10 +12,13 @@
 
 Foi implementado os requisitos obrigatórios requisitados: 
 </br> 
+
 * Cadastro de usuários: cadastrar usuário, recuperar senha, validação dos formulários de login
 </br> 
+
 * Pautas: listar pautas abertas e fechadas e cadastro de pautas.
 </br> 
+
 * Perfil: exibir perfil de acesso.
 </br> 
 
