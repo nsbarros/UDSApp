@@ -1,6 +1,6 @@
+import 'package:UDSApp/app/pages/PasswordReset/password_reset_presenter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
-import 'package:uds_app/app/pages/PasswordReset/password_reset_presenter.dart';
 
 class PasswordResetController extends Controller{
 

@@ -1,8 +1,7 @@
+import 'package:UDSApp/domain/usecases/profile_signout.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
-import 'package:uds_app/domain/usecases/profile_signout.dart';
 
 import '../../../domain/usecases/profile_usecase.dart';
-import '../SignUp/signup_presenter.dart';
 
 class ProfilePresenter extends Presenter{
 
@@ -30,31 +29,35 @@ class ProfilePresenter extends Presenter{
   }
 
   void signOut(){
-    signOutUseCase.execute(_GetSignOutPresenterObserver(), (){});
+    signOutUseCase.execute(_GetSignOutPresenterObserver(this), (){});
   }
 
 }
 
-class _GetSignOutPresenterObserver extends Observer<SignOutResponse>{
-  
-  SignUpPresenter presenter;
-  
+class _GetSignOutPresenterObserver extends Observer<SignOutResponse> {
+
+  ProfilePresenter presenter;
+
+
+  _GetSignOutPresenterObserver(this.presenter);
+
   @override
   void onComplete() {
-    assert(presenter.getSingUpOnComplete() != null);
-    presenter.getSingUpOnComplete();
+    assert(presenter.signOutUseCaseOnComplete != null);
+    presenter.signOutUseCaseOnComplete();
   }
 
   @override
   void onError(e) {
-    assert(presenter.getSingUpOnError() != null);
-    presenter.getSingUpOnError(e);
+   assert(presenter.signOutUseCaseOnErro != null);
+   presenter.signOutUseCaseOnErro(e);
   }
 
   @override
   void onNext(SignOutResponse response) {
-    assert(presenter.getSingUpOnNext(response.response));
-  } 
+   assert(presenter.signOutUseCaseOnNext != null);
+   presenter.signOutUseCaseOnNext(response.response);
+  }
 }
 
 class _GetProfilePresenterObserver extends Observer<ProfileUseCaseResponse> {

@@ -1,7 +1,7 @@
+import 'package:UDSApp/domain/entities/pauta.dart';
+import 'package:UDSApp/domain/usecases/pauta_get_user_usecase.dart';
+import 'package:UDSApp/domain/usecases/pauta_insert_usecase.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
-import 'package:uds_app/domain/entities/pauta.dart';
-import 'package:uds_app/domain/usecases/pauta_get_user_usecase.dart';
-import 'package:uds_app/domain/usecases/pauta_insert_usecase.dart';
 
 class PautaInsertPresenter extends Presenter{
 
@@ -42,19 +42,19 @@ class _GetUserObserver extends Observer<GetUserUseCaseResponse> {
 
   @override
   void onComplete() {
-    assert(presenter.getUserComplete() != null);
+    assert(presenter.getUserComplete != null);
     presenter.getUserComplete();
   }
 
   @override
   void onError(e) {
-   assert(presenter.getUserError() != null);
+   assert(presenter.getUserError != null);
    presenter.getUserError(e);
   }
 
   @override
   void onNext(GetUserUseCaseResponse response) {
-    assert(presenter.getUserNext() != null);
+    assert(presenter.getUserNext != null);
     presenter.getUserNext(response.user);
   }
 }
@@ -67,19 +67,19 @@ class _GetPautaInsertObserver extends Observer<PautaInsertUseCaseResponse> {
 
   @override
   void onComplete() {
-   assert(presenter.insertPautaComplete() != null);
+   assert(presenter.insertPautaComplete != null);
    presenter.insertPautaComplete();
   }
 
   @override
   void onError(e) {
-    assert(presenter.insertPautaError() != null);
+    assert(presenter.insertPautaError != null);
     presenter.insertPautaError(e);
   }
 
   @override
   void onNext(PautaInsertUseCaseResponse response) {
-    assert(presenter.insertPautaNext() != null);
+    assert(presenter.insertPautaNext != null);
     presenter.insertPautaNext(response.mensagem);
   }
 }

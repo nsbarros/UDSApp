@@ -1,8 +1,10 @@
+import 'package:UDSApp/app/pages/Pauta/pauta_insert_view.dart';
+import 'package:UDSApp/app/pages/Pauta/pauta_open_controller.dart';
+import 'package:UDSApp/data/repositories/data_pautas_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
-import 'package:uds_app/app/pages/Pauta/pauta_insert_view.dart';
-import 'package:uds_app/app/pages/Pauta/pauta_open_controller.dart';
-import 'package:uds_app/data/repositories/data_pautas_repository.dart';
+
+import 'Widgets/Loading_widget.dart';
 class ListOpen extends View{
 
   @override
@@ -22,7 +24,6 @@ class _ListOpenState extends ViewState<ListOpen, PautaOpenController> {
 
   @override
   Widget buildPage() {
-
    return Scaffold(
      key:
      globalKey,
@@ -90,16 +91,7 @@ class _ListOpenState extends ViewState<ListOpen, PautaOpenController> {
               },
             );
           },
-        ) : Center(
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              CircularProgressIndicator(),
-              Text("Please wait, loading information ..."),
-            ],
-          ),
-        ),
+        ) : Loading(),
       ),
      floatingActionButton: FloatingActionButton(
        onPressed: () {

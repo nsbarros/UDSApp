@@ -1,5 +1,5 @@
+import 'package:UDSApp/domain/usecases/password_reset_usecase.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
-import 'package:uds_app/domain/usecases/password_reset_usecase.dart';
 
 class PasswordResetPresenter extends Presenter{
 

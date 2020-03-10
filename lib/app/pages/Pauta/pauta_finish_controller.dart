@@ -1,7 +1,8 @@
+import 'package:UDSApp/app/pages/Pauta/pauta_finish_presenter.dart';
+import 'package:UDSApp/domain/entities/pauta.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
-import 'package:uds_app/app/pages/Pauta/pauta_finish_presenter.dart';
-import 'package:uds_app/domain/entities/pauta.dart';
+
 
 class PautaFinishController extends Controller{
 

@@ -2,17 +2,19 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:uds_app/domain/entities/pauta.dart';
-import 'package:uds_app/domain/entities/user.dart';
-import 'package:uds_app/domain/repositories/pauta_repository.dart';
+import 'package:UDSApp/domain/entities/pauta.dart';
+import 'package:UDSApp/domain/entities/user.dart';
+import 'package:UDSApp/domain/repositories/pauta_repository.dart';
 
 class DataPautaRepository extends PautaRepository {
   Firestore _firebase = null;
+  FirebaseAuth _firebaseAuth = null;
   // sigleton
   static DataPautaRepository _instance = DataPautaRepository._internal();
 
   DataPautaRepository._internal() {
     _firebase = Firestore.instance;
+    _firebaseAuth = FirebaseAuth.instance;
   }
 
   factory DataPautaRepository() => _instance;
@@ -70,25 +72,17 @@ class DataPautaRepository extends PautaRepository {
   }
 
   @override
-  Future<Stream<User>> getCurrentUser() async {
-    Firestore  _firebase = Firestore.instance;
-
-    StreamController<User> controller = StreamController<User>();
-
+  Future<User> getCurrentUser() async {
     User user;
-
-    FirebaseUser firebaseUser = await FirebaseAuth.instance.currentUser();
-
-    var condition = _firebase.collection("users").where("id" , isEqualTo : "${firebaseUser.uid}");
-
-    condition.getDocuments().then((query){
-      query.documents.map((doc){
-        User userSelect = User.fromMap(doc.data, doc.documentID);
-        user = userSelect;
-        controller.add(user);
-        controller.close();
-        return controller.stream;
-      }).toList();
+    await _firebaseAuth.currentUser().then((firebaseUser) async {
+      var condition = _firebase.collection("users").where("id" , isEqualTo : "${firebaseUser.uid}");
+      await condition.getDocuments().then((query){
+        query.documents.map((doc){
+          User userSelect = User.fromMap(doc.data, doc.documentID);
+          user = userSelect;
+        }).toList();
+      });
     });
+    return user;
   }
 }

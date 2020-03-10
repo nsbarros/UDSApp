@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
-import 'package:uds_app/domain/entities/user.dart';
-import 'package:uds_app/domain/repositories/users_repository.dart';
+import 'package:UDSApp/domain/entities/user.dart';
+import 'package:UDSApp/domain/repositories/users_repository.dart';
 
 import 'profile_presenter.dart';
 
@@ -30,7 +30,6 @@ class ProfileController extends Controller{
     presenter.profilePresenterOnComplete = (){};
 
     presenter.signOutUseCaseOnNext = (String result) {
-      ScaffoldState state = getState();
       Future.delayed(Duration(seconds: 2)).then((_){
         Navigator.of(getContext()).pop();
       });
@@ -40,9 +39,14 @@ class ProfileController extends Controller{
       ScaffoldState state = getState();
       state.showSnackBar(SnackBar(content: Text(e.message)));
       refreshUI();
+      Future.delayed(Duration(seconds: 10)).then((_){
+        Navigator.of(getContext()).pop();
+      });
     };
 
-    presenter.signOutUseCaseOnComplete = (){};
+    presenter.signOutUseCaseOnComplete = (){
+      print("signOutUseCaseOnComplete");
+    };
 
   }
 

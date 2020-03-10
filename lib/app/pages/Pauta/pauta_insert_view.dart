@@ -1,9 +1,11 @@
+import 'package:UDSApp/app/pages/Pauta/pauta_insert_controller.dart';
+import 'package:UDSApp/data/repositories/data_pautas_repository.dart';
+import 'package:UDSApp/domain/entities/pauta.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
-import 'package:uds_app/app/pages/Pauta/pauta_insert_controller.dart';
-import 'package:uds_app/data/repositories/data_pautas_repository.dart';
-import 'package:uds_app/domain/entities/pauta.dart';
+
+import 'Widgets/Loading_widget.dart';
 
 class AddPauta extends View{
 
@@ -22,6 +24,12 @@ class _AddPautaState extends ViewState<AddPauta, AddPautaController> {
   _AddPautaState() : super(AddPautaController(DataPautaRepository()));
 
   @override
+  void initState() {
+    super.initState();
+    controller.getUser();
+  }
+
+  @override
   Widget buildPage() {
     return Scaffold(
       key: globalKey,
@@ -32,11 +40,14 @@ class _AddPautaState extends ViewState<AddPauta, AddPautaController> {
             left: 40,
             right: 40,
           ),
-          child: ListView(
+          child: controller.user != null ? ListView(
             children: <Widget>[
               TextFormField(
                 keyboardType: TextInputType.text,
                 controller: widget._title,
+                validator: (value){
+                  return _validarForm(value);
+                },
                 style: new TextStyle(
                     color: Colors.black38,
                     fontWeight: FontWeight.w400,
@@ -52,6 +63,9 @@ class _AddPautaState extends ViewState<AddPauta, AddPautaController> {
               TextFormField(
                 controller: widget._description,
                 keyboardType: TextInputType.text,
+                validator: (value){
+                  return _validarForm(value);
+                },
                 style: new TextStyle(
                     color: Colors.black38,
                     fontWeight: FontWeight.w400,
@@ -66,8 +80,11 @@ class _AddPautaState extends ViewState<AddPauta, AddPautaController> {
               ),
               TextFormField(
                 enabled: false,
-                initialValue: controller.user.name ?? '',
+                initialValue: controller.user != null ? controller.user.name : '',
                 keyboardType: TextInputType.text,
+                validator: (value){
+                  return _validarForm(value);
+                },
                 style: new TextStyle(
                     color: Colors.black38,
                     fontWeight: FontWeight.w400,
@@ -123,9 +140,16 @@ class _AddPautaState extends ViewState<AddPauta, AddPautaController> {
                 ),
               ),
             ],
-          ),
+          ) : Loading(),
         ),
       ),
     );
+  }
+
+  String _validarForm(String value) {
+    if(value.isNotEmpty){
+     return "Required field";
+    }
+    return null;
   }
 }

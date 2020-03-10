@@ -1,9 +1,9 @@
+import 'package:UDSApp/data/repositories/data_users_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
-import 'package:uds_app/app/pages/Home/home_presenter.dart';
-import 'package:uds_app/data/repositories/data_users_repository.dart';
 
 import '../Navigator/welcome_view.dart';
+import 'home_presenter.dart';
 
 class HomeController extends Controller{
 

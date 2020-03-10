@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
-import 'package:uds_app/app/pages/SignUp/signup_presenter.dart';
-import 'package:uds_app/domain/repositories/users_repository.dart';
+import 'package:UDSApp/app/pages/SignUp/signup_presenter.dart';
+import 'package:UDSApp/domain/repositories/users_repository.dart';
 
 class SignUpController extends Controller{
 

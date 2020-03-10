@@ -1,5 +1,5 @@
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
-import 'package:uds_app/domain/usecases/sign_up_usecase.dart';
+import 'package:UDSApp/domain/usecases/sign_up_usecase.dart';
 
 class SignUpPresenter extends Presenter {
 

@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
-import 'package:uds_app/domain/entities/pauta.dart';
-import 'package:uds_app/domain/repositories/pauta_repository.dart';
+import 'package:UDSApp/domain/entities/pauta.dart';
+import 'package:UDSApp/domain/repositories/pauta_repository.dart';
 
 class PautaFinishUseCase
     extends UseCase<PautaFinishUseCaseResponse, PautaFinishParamns> {

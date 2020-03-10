@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
-import 'package:uds_app/app/pages/SignUp/signup_controller.dart';
-import 'package:uds_app/data/repositories/data_users_repository.dart';
+import 'package:UDSApp/app/pages/SignUp/signup_controller.dart';
+import 'package:UDSApp/data/repositories/data_users_repository.dart';
 
 class SignUp extends View{
 

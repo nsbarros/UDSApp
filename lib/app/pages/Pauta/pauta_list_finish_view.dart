@@ -1,7 +1,7 @@
+import 'package:UDSApp/app/pages/Pauta/pauta_finish_controller.dart';
+import 'package:UDSApp/data/repositories/data_pautas_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
-import 'package:uds_app/app/pages/Pauta/pauta_finish_controller.dart';
-import 'package:uds_app/data/repositories/data_pautas_repository.dart';
 
 class ListFinish extends View{
 

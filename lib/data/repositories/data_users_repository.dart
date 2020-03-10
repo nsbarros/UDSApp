@@ -2,8 +2,8 @@ import 'dart:async';
 
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
-import 'package:uds_app/domain/entities/user.dart';
-import 'package:uds_app/domain/repositories/users_repository.dart';
+import 'package:UDSApp/domain/entities/user.dart';
+import 'package:UDSApp/domain/repositories/users_repository.dart';
 
 class DataUsersRepository extends UsersRepository{
 
@@ -84,9 +84,7 @@ class DataUsersRepository extends UsersRepository{
 
   @override
   Future signOut() async {
-    await _firebaseAuth.signOut().then(null).whenComplete((){
-      return;
-    });
+    await _firebaseAuth.signOut();
   }
 
 }

@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
-import 'package:uds_app/domain/repositories/users_repository.dart';
+import 'package:UDSApp/domain/repositories/users_repository.dart';
 
 class PasswordResetUseCase extends UseCase<PasswordResetUseCaseResponse, PasswordResetParams>{
   

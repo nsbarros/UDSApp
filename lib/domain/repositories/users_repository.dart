@@ -1,5 +1,5 @@
 
-import 'package:uds_app/domain/entities/user.dart';
+import 'package:UDSApp/domain/entities/user.dart';
 
 import '../entities/user.dart';
 

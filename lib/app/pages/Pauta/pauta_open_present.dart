@@ -1,7 +1,7 @@
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
-import 'package:uds_app/domain/entities/pauta.dart';
-import 'package:uds_app/domain/usecases/pauta_finish_usecase.dart';
-import 'package:uds_app/domain/usecases/pauta_get_open_usecase.dart';
+import 'package:UDSApp/domain/entities/pauta.dart';
+import 'package:UDSApp/domain/usecases/pauta_finish_usecase.dart';
+import 'package:UDSApp/domain/usecases/pauta_get_open_usecase.dart';
 
 class  PautaOpenPresenter extends Presenter {
 

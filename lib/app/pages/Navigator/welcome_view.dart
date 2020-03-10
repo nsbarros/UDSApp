@@ -1,8 +1,8 @@
+import 'package:UDSApp/app/pages/Pauta/pauta_list_finish_view.dart';
+import 'package:UDSApp/app/pages/Pauta/pauta_list_open_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 import 'package:mobile_sidebar/mobile_sidebar.dart';
-import 'package:uds_app/app/pages/Pauta/pauta_list_finish_view.dart';
-import 'package:uds_app/app/pages/Pauta/pauta_list_open_view.dart';
 
 import '../../../data/repositories/data_users_repository.dart';
 import '../Profile/profile_controller.dart';
@@ -26,6 +26,8 @@ class _WelcomeState extends ViewState<Welcome, ProfileController> {
   Widget buildPage() {
     return SafeArea(
       child: Scaffold(
+        key:
+        globalKey,
         body: MobileSidebar(
           currentIndex: index,
           onTabChanged: (val) {

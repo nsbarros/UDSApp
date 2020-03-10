@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
-import 'package:uds_app/app/pages/Profile/profile_controller.dart';
-import 'package:uds_app/data/repositories/data_users_repository.dart';
+import 'package:UDSApp/app/pages/Pauta/Widgets/Loading_widget.dart';
+import 'package:UDSApp/app/pages/Profile/profile_controller.dart';
+import 'package:UDSApp/data/repositories/data_users_repository.dart';
 
 class Profile extends View{
 
@@ -44,16 +45,7 @@ class _ProfileState extends ViewState<Profile, ProfileController> {
             ),
           ),
         ],
-      ) : Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            CircularProgressIndicator(),
-            Text("Please wait, loading information ..."),
-          ],
-        ),
-      ),
+      ) : Loading(),
     );
   }
 }

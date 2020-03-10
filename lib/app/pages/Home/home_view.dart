@@ -1,9 +1,9 @@
+import 'package:UDSApp/app/pages/PasswordReset/password_reset_view.dart';
+import 'package:UDSApp/app/pages/SignUp/signup_view.dart';
+import 'package:UDSApp/data/repositories/data_users_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
-import 'package:uds_app/app/pages/PasswordReset/password_reset_view.dart';
-import 'package:uds_app/app/pages/SignUp/signup_view.dart';
-import 'package:uds_app/data/repositories/data_users_repository.dart';
 
 import 'home_controller.dart';
 

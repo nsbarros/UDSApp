@@ -1,5 +1,5 @@
-import 'package:uds_app/domain/entities/pauta.dart';
-import 'package:uds_app/domain/entities/user.dart';
+import 'package:UDSApp/domain/entities/pauta.dart';
+import 'package:UDSApp/domain/entities/user.dart';
 
 abstract class PautaRepository{
   Future<List<Pauta>> listOpen();
@@ -7,5 +7,5 @@ abstract class PautaRepository{
   Future<void> updateStatusPautaFinish(Pauta pauta);
   Future<void> updateStatusOpen(Pauta pauta);
   Future<void> insertPauta(Pauta pauta);
-  Future<Stream<User>> getCurrentUser();
+  Future<User> getCurrentUser() ;
 }

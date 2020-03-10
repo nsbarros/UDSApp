@@ -16,10 +16,9 @@ class SignOut extends UseCase<SignOutResponse, void>{
     StreamController<SignOutResponse> controller = StreamController();
 
     try{
-      await repository.signOut().whenComplete((){
-        controller.add(SignOutResponse("Sucess"));
-        controller.close();
-      });
+      repository.signOut();
+      controller.add(SignOutResponse("Sucess"));
+      controller.close();
     }catch(e){
       controller.add(e);
     }
