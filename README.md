@@ -33,5 +33,5 @@ Segue abaixo, o diagrama que explica como foi implementado a arquitetura baseado
 </br> 
 
 <p align="center">
-  <img src="pics/architecture.png" alt="Arquitetura" />
+  <img src="pics/architecture.PNG" alt="Arquitetura" />
 </p>
