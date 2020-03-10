@@ -73,7 +73,7 @@ class _WelcomeState extends ViewState<Welcome, ProfileController> {
               },
             );
           },
-          showSearchButton: true,
+          showSearchButton: false,
           tabs: <TabChild>[
             TabChild(
               icon: Icon(Icons.list),
