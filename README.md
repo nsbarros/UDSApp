@@ -12,10 +12,13 @@
 
 Foi implementado os requisitos obrigatórios requisitados: 
 </br> 
+
 * Cadastro de usuários: cadastrar usuário, recuperar senha, validação dos formulários de login
 </br> 
+
 * Pautas: listar pautas abertas e fechadas e cadastro de pautas.
 </br> 
+
 * Perfil: exibir perfil de acesso.
 </br> 
 
@@ -33,5 +36,5 @@ Segue abaixo, o diagrama que explica como foi implementado a arquitetura baseado
 </br> 
 
 <p align="center">
-  <img src="pics/architecture.png" alt="Arquitetura" />
+  <img src="pics/architecture.PNG" alt="Arquitetura" />
 </p>
