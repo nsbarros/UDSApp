@@ -1,29 +1,30 @@
-import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 import 'package:flutter/material.dart';
-import 'package:uds_app/app/pages/PasswordReset/password_reset_controller.dart';
-import 'package:uds_app/data/repositories/data_users_repository.dart';
+import 'package:flutter/src/widgets/framework.dart';
+import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
+import 'package:uds_app/app/pages/Pauta/pauta_insert_controller.dart';
+import 'package:uds_app/data/repositories/data_pautas_repository.dart';
+import 'package:uds_app/domain/entities/pauta.dart';
 
-class PasswordReset extends View{
+class AddPauta extends View{
 
-  final _email = TextEditingController();
+  final _title = TextEditingController();
+  final _description = TextEditingController();
+  final _autor = TextEditingController();
 
   @override
   State<StatefulWidget> createState() {
-    return _PasswordResetState();
+    return _AddPautaState();
   }
+
 }
 
-class _PasswordResetState extends ViewState<PasswordReset, PasswordResetController> {
-  _PasswordResetState() : super(PasswordResetController(DataUsersRepository()));
+class _AddPautaState extends ViewState<AddPauta, AddPautaController> {
+  _AddPautaState() : super(AddPautaController(DataPautaRepository()));
 
   @override
   Widget buildPage() {
     return Scaffold(
       key: globalKey,
-      appBar: AppBar(
-        title: Text("UDS TECNOLOGIA",
-          style: TextStyle(color: Colors.white),),
-      ),
       body: SafeArea(
         child: Padding(
           padding: EdgeInsets.only(
@@ -33,38 +34,51 @@ class _PasswordResetState extends ViewState<PasswordReset, PasswordResetControll
           ),
           child: ListView(
             children: <Widget>[
-              Center(
-                child: Container(
-                  //color: Colors.white,
-                  width: 100,
-                  height: 100,
-                  decoration: BoxDecoration(
-                    shape:BoxShape.rectangle,
-                    image: DecorationImage(
-                        image: AssetImage("images/logo.png")),
-                  ),
-                ),
-              ),
-              SizedBox(
-                height: 40,
-              ),
               TextFormField(
                 keyboardType: TextInputType.text,
-                controller: widget._email,
+                controller: widget._title,
                 style: new TextStyle(
                     color: Colors.black38,
                     fontWeight: FontWeight.w400,
                     fontSize: 20),
                 decoration: InputDecoration(
-                  labelText: "E-mail",
+                  labelText: "Title",
                   labelStyle: TextStyle(color: Colors.black38),
                 ),
               ),
               SizedBox(
                 height: 10,
               ),
+              TextFormField(
+                controller: widget._description,
+                keyboardType: TextInputType.text,
+                style: new TextStyle(
+                    color: Colors.black38,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 20),
+                decoration: InputDecoration(
+                  labelText: "Description",
+                  labelStyle: TextStyle(color: Colors.black38),
+                ),
+              ),
               SizedBox(
-                height: 40,
+                height: 10,
+              ),
+              TextFormField(
+                enabled: false,
+                initialValue: controller.user.name ?? '',
+                keyboardType: TextInputType.text,
+                style: new TextStyle(
+                    color: Colors.black38,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 20),
+                decoration: InputDecoration(
+                  labelText: "Autor",
+                  labelStyle: TextStyle(color: Colors.black38),
+                ),
+              ),
+              SizedBox(
+                height: 10,
               ),
               Container(
                 height: 60,
@@ -85,7 +99,7 @@ class _PasswordResetState extends ViewState<PasswordReset, PasswordResetControll
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: <Widget>[
                         Text(
-                          "Recover Password",
+                          "Add",
                           style: TextStyle(
                             fontWeight: FontWeight.bold,
                             color: Colors.blue,
@@ -95,7 +109,7 @@ class _PasswordResetState extends ViewState<PasswordReset, PasswordResetControll
                         ),
                         Container(
                           child: SizedBox(
-                            child: Icon(Icons.email),
+                            child: Icon(Icons.arrow_forward),
                             height: 28,
                             width: 28,
                           ),
@@ -103,7 +117,7 @@ class _PasswordResetState extends ViewState<PasswordReset, PasswordResetControll
                       ],
                     ),
                     onPressed: () {
-                      controller.resetPassword(widget._email.text);
+                      controller.add(Pauta('', widget._title.text, widget._description.text, widget._autor.text, 'open'));
                     },
                   ),
                 ),
@@ -113,32 +127,5 @@ class _PasswordResetState extends ViewState<PasswordReset, PasswordResetControll
         ),
       ),
     );
-
-
-    /*Scaffold(
-      key:
-      globalKey,
-      appBar: AppBar(
-        title: Text("UDS TECNOLOGIA",
-          style: Theme.of(context).textTheme.subtitle,),
-      ),
-      body: Column(
-        children: <Widget>[
-          TextField(
-            controller: widget._email,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'E-mail',
-            ),
-          ),
-          RaisedButton(
-            onPressed: (){
-              controller.resetPassword(widget._email.text);
-            },
-            child: Text("Reset"),
-          ),
-        ],
-      ),
-    );*/
   }
 }

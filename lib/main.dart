@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:uds_app/app/pages/Navigator/welcome_view.dart';
-import 'package:uds_app/app/pages/Pauta/pauta_list_open_view.dart';
-import 'package:uds_app/app/pages/SignUp/signup_view.dart';
 
 import 'app/pages/Home/home_view.dart';
+import 'app/pages/Navigator/welcome_view.dart';
 
 void main() => runApp(MyApp());
 
@@ -25,7 +24,7 @@ class MyApp extends StatelessWidget {
         // is not restarted.
         primarySwatch: Colors.blue,
       ),
-      home: Welcome(),
+      home: Home(),
     );
   }
 }

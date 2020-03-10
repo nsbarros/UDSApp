@@ -1,5 +1,9 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:uds_app/domain/entities/pauta.dart';
+import 'package:uds_app/domain/entities/user.dart';
 import 'package:uds_app/domain/repositories/pauta_repository.dart';
 
 class DataPautaRepository extends PautaRepository {
@@ -56,5 +60,35 @@ class DataPautaRepository extends PautaRepository {
     CollectionReference ref = _firebase.collection("pautas");
     await ref.document(pauta.id).updateData(pauta.toJson());
     return ;
+  }
+
+  @override
+  Future<void> insertPauta(Pauta pauta) async {
+    CollectionReference ref = _firebase.collection("pautas");
+    await ref.add(pauta.toMap());
+    return null;
+  }
+
+  @override
+  Future<Stream<User>> getCurrentUser() async {
+    Firestore  _firebase = Firestore.instance;
+
+    StreamController<User> controller = StreamController<User>();
+
+    User user;
+
+    FirebaseUser firebaseUser = await FirebaseAuth.instance.currentUser();
+
+    var condition = _firebase.collection("users").where("id" , isEqualTo : "${firebaseUser.uid}");
+
+    condition.getDocuments().then((query){
+      query.documents.map((doc){
+        User userSelect = User.fromMap(doc.data, doc.documentID);
+        user = userSelect;
+        controller.add(user);
+        controller.close();
+        return controller.stream;
+      }).toList();
+    });
   }
 }

@@ -16,8 +16,8 @@ class SignUpController extends Controller{
       presenter.getSingUpOnNext = (result){
         print("Resultado: ${result}");
         ScaffoldState state = getState();
-        state.setState((){
-          Navigator.pop(getContext());
+        Future.delayed(Duration(seconds: 2)).then((_){
+          Navigator.of(getContext()).pop();
         });
       };
 

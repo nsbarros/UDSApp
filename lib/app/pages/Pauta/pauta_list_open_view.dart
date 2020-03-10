@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
+import 'package:uds_app/app/pages/Pauta/pauta_insert_view.dart';
 import 'package:uds_app/app/pages/Pauta/pauta_open_controller.dart';
 import 'package:uds_app/data/repositories/data_pautas_repository.dart';
 class ListOpen extends View{
@@ -69,7 +70,8 @@ class _ListOpenState extends ViewState<ListOpen, PautaOpenController> {
                     return Container(
                       padding: EdgeInsets.all(10),
                       child: Text(
-                        "${controller.listOpen[index].titulo} - ${controller.listOpen[index].descricao.substring(0, controller.listOpen[index].descricao.length - 2)}..",
+                        "${controller.listOpen[index].titulo} - ${controller.listOpen[index].descricao}",
+                        maxLines: 2, overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           color: Colors.black54,
                           fontSize: 18,
@@ -99,6 +101,17 @@ class _ListOpenState extends ViewState<ListOpen, PautaOpenController> {
           ),
         ),
       ),
+     floatingActionButton: FloatingActionButton(
+       onPressed: () {
+         Navigator.push(
+           context,
+           MaterialPageRoute(
+               builder: (context) => AddPauta()),
+         );
+       },
+       child: Icon(Icons.add, color: Colors.white,),
+       backgroundColor: Colors.blue,
+     ),
     );
   }
 }

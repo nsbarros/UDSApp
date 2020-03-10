@@ -3,6 +3,8 @@ import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 import 'package:uds_app/app/pages/Home/home_presenter.dart';
 import 'package:uds_app/data/repositories/data_users_repository.dart';
 
+import '../Navigator/welcome_view.dart';
+
 class HomeController extends Controller{
 
   final HomePresenter homePresenter;
@@ -20,6 +22,9 @@ class HomeController extends Controller{
             .of(getContext())
             .primaryColor),)));
       refreshUI();
+      state.setState((){
+        Navigator.push(getContext(), MaterialPageRoute(builder: (context) => Welcome()));
+      });
     };
 
     homePresenter.getUserOnComplete = () {

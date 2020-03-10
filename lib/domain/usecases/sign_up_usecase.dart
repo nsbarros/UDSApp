@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter_clean_architecture/flutter_clean_architecture.dart';
 import 'package:uds_app/domain/repositories/users_repository.dart';
 
+import '../entities/user.dart';
+
 class SignUpUseCase extends UseCase<SignUpUseCaseResponde, SignUpUseCaseParams> {
 
   final UsersRepository repository;
@@ -19,6 +21,8 @@ class SignUpUseCase extends UseCase<SignUpUseCaseResponde, SignUpUseCaseParams> 
     try{
       validadeEmailPassword(params, controller);
       String result =  await repository.signUp(params.email, params.password);
+      User user = User(result, params.name, params.email, params.password);
+      await repository.saveUser(user);
       if(result != null){
         message = "Welcome to UDS technology";
       }

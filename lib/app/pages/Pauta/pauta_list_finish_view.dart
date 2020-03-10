@@ -70,7 +70,8 @@ class _ListFinishState extends ViewState<ListFinish, PautaFinishController> {
                     return Container(
                       padding: EdgeInsets.all(10),
                       child: Text(
-                        "${controller.listFinish[index].titulo} - ${controller.listFinish[index].descricao.substring(0, controller.listFinish[index].descricao.length - 2)}..",
+                        "${controller.listFinish[index].titulo} - ${controller.listFinish[index].descricao}",
+                        maxLines: 2, overflow: TextOverflow.ellipsis,
                         style: TextStyle(
                           color: Colors.black54,
                           fontSize: 18,

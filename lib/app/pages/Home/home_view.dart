@@ -7,8 +7,7 @@ import 'package:uds_app/data/repositories/data_users_repository.dart';
 
 import 'home_controller.dart';
 
-class Home extends View{
-
+class Home extends View {
   final _password = TextEditingController();
   final _email = TextEditingController();
 
@@ -16,65 +15,149 @@ class Home extends View{
   State<StatefulWidget> createState() {
     return _HomeState();
   }
-
 }
 
-class _HomeState extends ViewState<Home, HomeController>{
+class _HomeState extends ViewState<Home, HomeController> {
   _HomeState() : super(HomeController(DataUsersRepository()));
 
   @override
   Widget buildPage() {
     return Scaffold(
-      key:
-      globalKey,
-      appBar: AppBar(
-        title: Text("UDS TECNOLOGIA",
-        style: Theme.of(context).textTheme.subtitle,),
-      ),
-      body: Column(
-        children: <Widget>[
-          TextField(
-            controller: widget._email,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'E-mail',
-            ),
+      key: globalKey,
+      body: SafeArea(
+        child: Padding(
+          padding: EdgeInsets.only(
+            top: 60,
+            left: 40,
+            right: 40,
           ),
-          TextField(
-            controller: widget._password,
-            obscureText: true,
-            decoration: InputDecoration(
-              border: OutlineInputBorder(),
-              labelText: 'Password',
-            ),
+          child: ListView(
+            children: <Widget>[
+              Center(
+                child: Container(
+                  //color: Colors.white,
+                  width: 100,
+                  height: 100,
+                  decoration: BoxDecoration(
+                    shape:BoxShape.rectangle,
+                    image: DecorationImage(
+                        image: AssetImage("images/logo.png")),
+                  ),
+                ),
+              ),
+              SizedBox(
+                height: 40,
+              ),
+              TextFormField(
+                keyboardType: TextInputType.text,
+                controller: widget._email,
+                style: new TextStyle(
+                    color: Colors.black38,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 20),
+                decoration: InputDecoration(
+                  labelText: "E-mail",
+                  labelStyle: TextStyle(color: Colors.black38),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              TextFormField(
+                obscureText: true,
+                controller: widget._password,
+                keyboardType: TextInputType.text,
+                style: new TextStyle(
+                    color: Colors.black38,
+                    fontWeight: FontWeight.w400,
+                    fontSize: 20),
+                decoration: InputDecoration(
+                  labelText: "Password",
+                  labelStyle: TextStyle(color: Colors.black38),
+                ),
+              ),
+              SizedBox(
+                height: 10,
+              ),
+              Container(
+                  height: 40,
+                  alignment: Alignment.centerRight,
+                  child: FlatButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => PasswordReset()),
+                        );
+                      },
+                      child: Text(
+                        "Recover Password",
+                        textAlign: TextAlign.right,
+                      ))),
+              Container(
+                  height: 40,
+                  alignment: Alignment.centerRight,
+                  child: FlatButton(
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(builder: (context) => SignUp()),
+                        );
+                      },
+                      child: Text(
+                        "SignUp",
+                        textAlign: TextAlign.right,
+                      ))),
+              SizedBox(
+                height: 40,
+              ),
+              Container(
+                height: 60,
+                alignment: Alignment.centerLeft,
+                decoration: BoxDecoration(
+                    gradient: LinearGradient(
+                      begin: Alignment.topLeft,
+                      end: Alignment.bottomRight,
+                      colors: [
+                        Color.fromARGB(0, 72, 118, 255),
+                        Colors.white,
+                      ],
+                    ),
+                    borderRadius: BorderRadius.all(Radius.circular(5))),
+                child: SizedBox.expand(
+                  child: FlatButton(
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: <Widget>[
+                        Text(
+                          "Login",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                            color: Colors.blue,
+                            fontSize: 20,
+                          ),
+                          textAlign: TextAlign.left,
+                        ),
+                        Container(
+                          child: SizedBox(
+                            child: Icon(Icons.arrow_forward),
+                            height: 28,
+                            width: 28,
+                          ),
+                        ),
+                      ],
+                    ),
+                    onPressed: () {
+                      controller.logIn(
+                          widget._email.text, widget._password.text);
+                    },
+                  ),
+                ),
+              ),
+            ],
           ),
-          RaisedButton(
-            onPressed: (){
-              controller.logIn(widget._email.text, widget._password.text);
-            },
-            child: Text("Log-in"),
-          ),
-          RaisedButton(
-            onPressed: (){
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => SignUp()),
-              );
-            },
-            child: Text("SignUp"),
-          ),
-          RaisedButton(
-            onPressed: (){
-              Navigator.push(
-                context,
-                MaterialPageRoute(builder: (context) => PasswordReset()),
-              );
-            },
-            child: Text("Password Reset"),
-          )
-        ],
+        ),
       ),
     );
   }
-
 }

@@ -1,3 +1,6 @@
+import 'dart:async';
+
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:uds_app/domain/entities/user.dart';
 import 'package:uds_app/domain/repositories/users_repository.dart';
@@ -19,11 +22,6 @@ class DataUsersRepository extends UsersRepository{
   @override
   User getUser(String email) {
     return users[0];
-  }
-
-  @override
-  User searchUser(String email, password) {
-    return User(0, "nathan", "nathan", "123");
   }
 
   @override
@@ -52,9 +50,43 @@ class DataUsersRepository extends UsersRepository{
   }
 
   @override
-  User getCurrentUser(String uId) {
-    // TODO: implement getCurrentUser
+  Future<Stream<User>> getCurrentUser() async {
+
+    Firestore  _firebase = Firestore.instance;
+
+    StreamController<User> controller = StreamController<User>();
+
+    User user;
+
+    FirebaseUser firebaseUser = await _firebaseAuth.currentUser();
+
+    var condition = _firebase.collection("users").where("id" , isEqualTo : "${firebaseUser.uid}");
+
+    condition.getDocuments().then((query){
+      query.documents.map((doc){
+        User userSelect = User.fromMap(doc.data, doc.documentID);
+        user = userSelect;
+        controller.add(user);
+        controller.close();
+        return controller.stream;
+      }).toList();
+    });
+
+    return controller.stream;
+  }
+
+  @override
+  Future<void> saveUser(User user) async {
+    Firestore _firebase = Firestore.instance;
+    await _firebase.collection("users").add(user.toMap());
     return null;
+  }
+
+  @override
+  Future signOut() async {
+    await _firebaseAuth.signOut().then(null).whenComplete((){
+      return;
+    });
   }
 
 }
